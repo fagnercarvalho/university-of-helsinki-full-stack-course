@@ -1,0 +1,14 @@
+title 0.4: new note
+
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+note right of server: server adds note to in-memory 'notes' array
+server->browser: HTTP '302 Found' with Location header to '/notes'
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+server->browser: HTTP '200 OK' with html code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server->browser: HTTP '200 OK' with main.css file
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+server->browser: HTTP '200 OK' with main.js file
+note left of browser: browser starts executing JS code \nthat requests JSON data from server
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server->browser: HTTP '200 OK' containing JSON with all notes

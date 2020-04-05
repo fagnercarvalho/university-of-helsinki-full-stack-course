@@ -1,0 +1,11 @@
+title 0.5: Single page app
+
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+server->browser: HTTP '200 OK' with html code
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+server->browser: HTTP '200 OK' with main.css file
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+server->browser: HTTP '200 OK' with spa.js file
+note left of browser: browser starts executing JS code \nthat requests JSON data from server
+browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+server->browser: HTTP '200 OK' containing JSON with all notes

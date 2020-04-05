@@ -1,0 +1,5 @@
+title 0.6: New note
+
+note left of browser: browser starts executing JS code \nthat adds new note to 'notes' array \nand then adds new list item to page \nby using the DOM API
+browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+server->browser: HTTP '201 Created' containing JSON with success message: {"message":"note created"}
