@@ -1,10 +1,21 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-const App = (props) => {
+const Anecdote = ({ text, votes }) => (
+  <>
+    <p>
+      {text}
+    </p>
+    <p>
+      has {votes} votes
+    </p>
+  </>
+)
+
+const App = ({anecdotes}) => {
   const [selected, setSelected] = useState(0)
 
-const [votes, setVotes] = useState(Array(6).fill(0))
+  const [votes, setVotes] = useState(Array(6).fill(0))
 
   const showRandomAnecdote = () => {
     const random = Math.round(Math.random() * 5)
@@ -17,13 +28,17 @@ const [votes, setVotes] = useState(Array(6).fill(0))
     setVotes(copyVotes)
   }
 
+  const mostVotes = () => votes.indexOf(Math.max(...votes))
+
   return (
     <div>
-      <p>
-        {props.anecdotes[selected]}
-      </p>
+      <h1>Anecdote of the day</h1>
+      <Anecdote text={anecdotes[selected]} votes={votes[selected]} />
       <button onClick={() => vote()}>vote</button>
       <button onClick={() => showRandomAnecdote()}>next anecdote</button>
+      <br />
+      <h1>Anecdotes with most votes</h1>
+      <Anecdote text={anecdotes[mostVotes()]} votes={votes[mostVotes()]} />
     </div>
   )
 }
