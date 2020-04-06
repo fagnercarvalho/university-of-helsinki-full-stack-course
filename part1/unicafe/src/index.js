@@ -13,6 +13,14 @@ const App = () => {
 
   const setBadFeedback = () => setBad(bad + 1)
 
+  const formatNumber = (number) => number.toFixed(2)
+
+  const formatPercentage = (percentage) => formatNumber(percentage) + " %"
+
+  const averageFeedback = () => (good - bad) / (good + neutral + bad)
+
+  const positivePercentage = () => (good / (good + neutral + bad)) * 100
+
   return (
     <div>
       <h1>give feedback</h1>
@@ -24,6 +32,8 @@ const App = () => {
       <p>good {good}</p>
       <p>neutral {neutral}</p>
       <p>bad {bad}</p>
+      <p>average {formatNumber(averageFeedback())}</p>
+      <p>positive {formatPercentage(positivePercentage())}</p>
     </div>
   )
 }
